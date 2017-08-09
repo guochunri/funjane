@@ -30,7 +30,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = Prodcuct.find(params[:id])
+    @product = Prodcut.find(params[:id])
 
     if @product.update(product_params)
       redirect_to admin_products_path

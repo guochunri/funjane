@@ -25,10 +25,10 @@
 </div>
 
 <div class="group">
-  <%= f.input :brand_id, :label => t('f-product-brand') %>
+  <%= f.input :brand_id, :label => t('f-brand') %>
 </div>
 
 
-<%= f.submit t('f-product-submit'), data: { disable_with: "Submitting..." } %>
+<%= f.submit t('f-product-submit'), class: 'btn btn-lg btn-default' %>
 
 <% end %>
