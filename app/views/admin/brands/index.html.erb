@@ -11,6 +11,7 @@
   <!--=== 品牌列表标题 ===-->
   <thead>
     <tr>
+      <th></th>
       <th><%= t('f-brand-name') %></th>
       <th><%= t('f-brand-logo') %></th>
       <th><%= t('f-brand-description') %></th>
@@ -21,12 +22,20 @@
   <!--=== 品牌列表內容 ===-->
   <% @brands.each do |brand| %>
     <tr>
+      <td><%= render_brand_status(brand) %></td>
       <td><%= link_to(brand.name, admin_brand_path(brand)) %></td>
       <td><%= brand.logo %></td>
       <td><%= brand.description %></td>
       <!--=== 操作选项 ===-->
       <td>
-        <%= link_to(t('btn-brand-edit'), edit_admin_brand_path(brand), :class => 'btn btn-sm btn-default') %>
+        <!-- 编辑 -->
+        <%= link_to(t('btn-edit'), edit_admin_brand_path(brand), :class => 'btn btn-sm btn-default') %>
+        <!-- 发布 / 隐藏 -->
+        <% if brand.is_hidden %>
+          <%= link_to(t('btn-publish'), publish_admin_brand_path(brand), :method => :post, :class => 'btn btn-sm btn-default') %>
+        <% else %>
+          <%= link_to(t('btn-hide'), hide_admin_brand_path(brand), :method => :post, :class => 'btn btn-sm btn-default') %>
+        <% end %>
       </td>
     </tr>
   <% end %>

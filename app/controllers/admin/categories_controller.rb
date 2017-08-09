@@ -41,6 +41,18 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
+  def publish
+    @category = Category.find(params[:id])
+    @category.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @category = Category.find(params[:id])
+    @category.hide!
+    redirect_to :back
+  end
+
   private
 
   def category_params

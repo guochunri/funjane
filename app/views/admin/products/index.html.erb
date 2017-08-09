@@ -11,7 +11,7 @@
   <!--=== 商品列表标题 ===-->
   <thead>
     <tr>
-      <th><%= t('id') %></th>
+      <th></th>
       <th><%= t('f-product-name') %></th>
       <th><%= t('f-product-brand') %></th>
       <th><%= t('f-product-category') %></th>
@@ -22,13 +22,20 @@
   <!--=== 商品列表內容 ===-->
   <% @products.each do |product| %>
     <tr>
-      <td><%= product.id %></td>
+      <td><%= render_product_status(product) %></td>
       <td><%= link_to(product.name, admin_product_path(product)) %></td>
       <td><%= product.brand.name %></td>
       <td><%= product.category.name %></td>
       <!--=== 操作选项 ===-->
       <td>
-        <%= link_to(t('btn-product-edit'), edit_admin_product_path(product), :class => 'btn btn-sm btn-default') %>
+        <!-- 编辑 -->
+        <%= link_to(t('btn-edit'), edit_admin_product_path(product), :class => 'btn btn-sm btn-default') %>
+        <!-- 发布 / 隐藏 -->
+        <% if product.is_hidden %>
+          <%= link_to(t('btn-publish'), publish_admin_product_path(product), :method => :post, :class => 'btn btn-sm btn-default') %>
+        <% else %>
+          <%= link_to(t('btn-hide'), hide_admin_product_path(product), :method => :post, :class => 'btn btn-sm btn-default') %>
+        <% end %>
       </td>
     </tr>
   <% end %>

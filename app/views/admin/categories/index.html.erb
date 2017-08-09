@@ -11,6 +11,7 @@
   <!--=== 分类列表标题 ===-->
   <thead>
     <tr>
+      <th></th>
       <th><%= t('f-category-name') %></th>
       <th><%= t('f-category-options') %></th>
     </tr>
@@ -19,10 +20,18 @@
   <!--=== 分类列表內容 ===-->
   <% @categories.each do |category| %>
     <tr>
+      <td><%= render_category_status(category) %></td>
       <td><%= link_to(category.name, admin_category_path(category)) %></td>
       <!--=== 操作选项 ===-->
       <td>
-        <%= link_to(t('btn-category-edit'), edit_admin_category_path(category), :class => 'btn btn-sm btn-default') %>
+        <!-- 编辑 -->
+        <%= link_to(t('btn-edit'), edit_admin_category_path(category), :class => 'btn btn-sm btn-default') %>
+        <!-- 发布 / 隐藏 -->
+        <% if category.is_hidden %>
+          <%= link_to(t('btn-publish'), publish_admin_category_path(category), :method => :post, :class => 'btn btn-sm btn-default') %>
+        <% else %>
+          <%= link_to(t('btn-hide'), hide_admin_category_path(category), :method => :post, :class => 'btn btn-sm btn-default') %>
+        <% end %>
       </td>
     </tr>
   <% end %>

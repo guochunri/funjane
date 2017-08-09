@@ -7,4 +7,15 @@ class Product < ApplicationRecord
 
   belongs_to :category
   belongs_to :brand
+
+  def publish!
+    self.is_hidden = false
+    self.save
+  end
+
+  def hide!
+    self.is_hidden = true
+    self.save
+  end
+
 end

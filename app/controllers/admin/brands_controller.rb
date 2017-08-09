@@ -39,6 +39,18 @@ class Admin::BrandsController < ApplicationController
     end
   end
 
+  def publish
+    @brand = Brand.find(params[:id])
+    @brand.publish!
+    redirect_to :back
+  end
+ 
+  def hide
+    @brand = Brand.find(params[:id])
+    @brand.hide!
+    redirect_to :back
+  end
+
   private
 
   def brand_params
