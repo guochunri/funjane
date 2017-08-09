@@ -15,14 +15,18 @@
         <%= render "common/navbar" %>
       </div>
 
-      <!--=== 提示信息 ===-->
-      <%= render "common/flashes" %>
+      <!--=== 后台操作面板 ===-->
+      <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+          <li> <%= link_to(t('brand'), admin_brands_path, :class => 'btn btn-md btn-default') %> </li>
+        </ul>
+      </div>
 
-      <!--=== 网站内容 ===-->
-      <%= yield %>
+      <!--=== 后台內容 ===-->
+      <div class="col-md-10">
+        <%= yield %>
+      </div>
     </div>
-
     <%= render "common/footer" %>
-
   </body>
 </html>
