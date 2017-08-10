@@ -6,5 +6,6 @@ class Order < ApplicationRecord
   validates :shipping_address, presence: true
 
   belongs_to :user
+  has_many :order_items
 
 end
