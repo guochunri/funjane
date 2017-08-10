@@ -17,10 +17,16 @@ Rails.application.routes.draw do
       post :checkout  # 下订单
     end
   end
+  
   resources :cart_items
   resources :orders
 
-  #--=== 后台 ===-->
+  #--=== 使用者专区 ===-->
+  namespace :account do
+    resources :orders
+  end
+
+  #--=== 管理员专区 ===-->
   namespace :admin do
     # 品牌 #
     resources :brands do
