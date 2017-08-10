@@ -8,6 +8,10 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @product_images = @product.product_images.all
+
+    @category_groups = CategoryGroup.all
+    @brands = Brand.all
   end
 
   # 加入购物车
