@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+  mount_uploader :logo, ImageUploader
   validates :name, presence: true
 
   belongs_to :category_group
