@@ -6,30 +6,36 @@
       <a class="navbar-brand" href="/"><%= t('funjane') %></a>
     </div>
 
-
+    <!--=== navbar 按鈕 ===-->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!--=== 左側按鈕：商品 ===-->
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <%= link_to(t('product-access'), products_path) %>
+        </li>
+      </ul>
 
     <!--=== navbar 右侧按钮 ===-->
       <ul class="nav navbar-nav  navbar-right">
         <% if !current_user %>
-          <!--=== 注册登入 ===-->
+          <!-- 注册登入 -->
           <li><%= link_to(t('signup'), new_user_registration_path) %> </li>
           <li><%= link_to(t('login'), new_user_session_path) %></li>
         <% else %>
-          <!--=== 使用者下拉式选单 ===-->
+          <!-- 使用者下拉式选单 -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= t('greeting') %>
               <%= current_user.email %>
               <b class="caret"></b>
             </a>
-            <!--=== 选单选项 ===-->
+            <!-- 选单选项 -->
             <ul class="dropdown-menu">
-              <!--=== admin 后台 ===-->
+              <!-- admin 后台 -->
               <% if current_user.admin? %>
                 <li> <%= link_to(t('admin-access'), admin_products_path) %> </li>
               <% end %>
-              <!--=== user 选项 ===-->
+              <!-- user 选项 -->
               <li> <%= link_to("登出", destroy_user_session_path, method: :delete) %> </li>
             </ul>
           </li>
