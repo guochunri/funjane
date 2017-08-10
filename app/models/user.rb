@@ -12,4 +12,8 @@ class User < ApplicationRecord
     is_admin
   end
 
+  def is_wish_list_owner_of?(product)
+    wish_list_items.include?(product)
+  end
+
 end
