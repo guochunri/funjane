@@ -20,7 +20,9 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @brands = Brand.all.map { |b| [b.name, b.id] }
     @product.brand_id = params[:brand_id]
+    @categories = Category.all.map { |c| [c.name, c.id] }
     @product.category_id = params[:category_id]
 
     if @product.save
@@ -38,7 +40,9 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Prodcut.find(params[:id])
+    @brands = Brand.all.map { |b| [b.name, b.id] }
     @product.brand_id = params[:brand_id]
+    @categories = Category.all.map { |c| [c.name, c.id] }
     @product.category_id = params[:category_id]
 
     if @product.update(product_params)

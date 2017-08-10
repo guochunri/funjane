@@ -18,6 +18,7 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    @category_groups = CategoryGroup.all.map { |g| [g.name, g.id] }
     @category.category_group_id = params[:category_group_id]
 
     if @category.save
@@ -34,6 +35,7 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
+    @category_groups = CategoryGroup.all.map { |g| [g.name, g.id] }
     @category.category_group_id = params[:category_group_id]
 
     if @category.update(category_params)
