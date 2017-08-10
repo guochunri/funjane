@@ -1,17 +1,17 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.where(:is_hidden => false).all.paginate(:page => params[:page], :per_page => 12)
-    @category_groups = CategoryGroup.all
-    @brands = Brand.all
+    @products = Product.published.paginate(:page => params[:page], :per_page => 12)
+    @category_groups = CategoryGroup.published
+    @brands = Brand.published
   end
 
   def show
     @product = Product.find(params[:id])
     @product_images = @product.product_images.all
 
-    @category_groups = CategoryGroup.all
-    @brands = Brand.all
+    @category_groups = CategoryGroup.published
+    @brands = Brand.published
   end
 
   # 加入购物车

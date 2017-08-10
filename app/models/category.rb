@@ -5,6 +5,8 @@ class Category < ApplicationRecord
   belongs_to :category_group
   has_many :products
 
+  scope :published, -> { where(is_hidden: false) }
+
   def publish!
     self.is_hidden = false
     self.save
