@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # 购物车
+  resources :carts
+
   #--=== 后台 ===-->
   namespace :admin do
     # 品牌 #
