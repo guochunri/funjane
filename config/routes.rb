@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   end
 
   # 购物车
-  resources :carts
+  resources :carts do
+    collection do
+      delete :clear
+    end
+  end
   resources :cart_items
 
   #--=== 后台 ===-->
@@ -31,7 +35,7 @@ Rails.application.routes.draw do
         post :hide
       end
     end
-    
+
     # 分类 #
     resources :categories do
       member do
