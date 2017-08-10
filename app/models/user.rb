@@ -12,6 +12,16 @@ class User < ApplicationRecord
     is_admin
   end
 
+  # 将该商品加入愿望清单
+  def add_to_wish_list!(product)
+    wish_list_items << product
+  end
+
+   # 从愿望清单上刪除该商品
+  def remove_from_wish_list!(product)
+    wish_list_items.delete(product)
+  end
+
   def is_wish_list_owner_of?(product)
     wish_list_items.include?(product)
   end
