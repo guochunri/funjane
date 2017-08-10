@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :orders
+  has_many :wish_lists
+  has_many :wish_list_items, :through => :wish_lists, :source => :product
 
   def admin?
     is_admin

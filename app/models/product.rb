@@ -9,6 +9,8 @@ class Product < ApplicationRecord
   belongs_to :brand
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images
+  has_many :wish_lists
+  has_many :wish_list_owners, :through => :wish_lists, :source => :user
 
   scope :published, -> { where(is_hidden: false) }
 
