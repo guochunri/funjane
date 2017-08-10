@@ -1,4 +1,42 @@
-<!--=== 頁面标题 ===-->
+<!--=== 页面标题 ===-->
+<h2><%= t('category-group-index') %></h2>
+
+<!--=== 新增类型 ===-->
+<div class="pull-right">
+  <%= link_to(t('btn-category-group-new'), new_admin_category_group_path, :class => 'btn btn-sm btn-default')%>
+</div>
+
+<!--=== 类型列表 ===-->
+<table class="table">
+  <!--=== 类型列表标题 ===-->
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= t('f-category-group') %></th>
+      <th><%= t('f-options') %></th>
+    </tr>
+  </thead>
+  <!--=== 类型列表內容 ===-->
+  <% @category_groups.each do |category_group| %>
+    <tr>
+      <td><%= render_category_group_status(category_group) %></td>
+      <td><%= category_group.name %></td>
+      <!--=== 操作选项 ===-->
+      <td>
+        <!-- 编辑 -->
+        <%= link_to(t('btn-edit'), edit_admin_category_group_path(category_group), :class => 'btn btn-sm btn-default') %>
+        <!-- 发布 / 隐藏 -->
+        <%= render_category_group_publish_or_hide(category_group) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<hr/>
+
+
+<!--=== 页面标题 ===-->
 <h2><%= t('category-index') %></h2>
 
 <!--=== 新增分类 ===-->
