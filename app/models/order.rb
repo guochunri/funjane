@@ -25,6 +25,7 @@ class Order < ApplicationRecord
   end
 
   # AASM 订单状态
+  include AASM
 
   # 定义状态
   aasm do
