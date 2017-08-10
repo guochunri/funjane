@@ -32,7 +32,10 @@ Rails.application.routes.draw do
 
   #--=== 使用者专区 ===-->
   namespace :account do
+    # 历史订单
     resources :orders
+    # 收藏清单
+    resources :products
   end
 
   #--=== 管理员专区 ===-->

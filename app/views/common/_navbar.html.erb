@@ -19,6 +19,12 @@
 
       <!--=== 右侧按钮： ===-->
       <ul class='nav navbar-nav  navbar-right'>
+        <!-- 願望清單 -->
+        <li>
+          <%= link_to account_products_path do %>
+            <%= t('wish-list') %> <i class='fa fa-bookmark-o'></i>
+          <% end %>
+        </li>
         <!-- 购物车 -->
         <li>
           <%= link_to carts_path do %>
