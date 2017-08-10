@@ -9,10 +9,12 @@ class Admin::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @product_images = @product.product_images.all
   end
 
   def new
     @product = Product.new
+    @product_image = @product.product_images.build
 
     @brands = Brand.all.map { |b| [b.name, b.id] }
     @categories = Category.all.map { |c| [c.name, c.id] }
@@ -26,6 +28,11 @@ class Admin::ProductsController < ApplicationController
     @product.category_id = params[:category_id]
 
     if @product.save
+      if params[:product_images] != nil
+        params[:product_images]['image'].each do |i|
+          @product_image = @product.product_images.create(:image => i)
+        end
+      end
       redirect_to admin_products_path
     else
       render :new
@@ -39,9 +46,24 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = Prodcut.find(params[:id])
+    @product = Product.find(params[:id])
+
+    if params[:product_images] != nil
+      @product.product_images.destroy_all
+
+      params[:product_images]['image'].each do |i|
+        @product_image = @product.product_images.create(:image => i)
+      end
+      @product.update(product_params)
+    elsif @product.update(product_params)
+      redirect_to admin_products_path
+    else
+      render :edit
+    end
+
     @brands = Brand.all.map { |b| [b.name, b.id] }
     @product.brand_id = params[:brand_id]
+
     @categories = Category.all.map { |c| [c.name, c.id] }
     @product.category_id = params[:category_id]
 
