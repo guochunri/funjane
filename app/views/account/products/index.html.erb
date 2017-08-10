@@ -26,11 +26,17 @@
             <td>
               <%= product.price %>
             </td>
+            <!-- 移动到购物车 -->
             <td>
-              <%= t('btn-move-to-cart') %>
+              <%= link_to add_to_cart_account_product_path(product), method: :post do %>
+                <%= t('btn-move-to-cart') %>
+              <% end %>
             </td>
+            <!-- 从愿望清单上删除该商品 -->
             <td>
-              <i class='fa fa-close'></i>
+              <%= link_to remove_from_wish_list_account_product_path(product), method: :post do %>
+                <i class='fa fa-close'></i>
+              <% end %>
             </td>
           </tr>
         <% end %>

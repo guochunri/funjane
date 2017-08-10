@@ -35,7 +35,12 @@ Rails.application.routes.draw do
     # 历史订单
     resources :orders
     # 收藏清单
-    resources :products
+    resources :products do
+      member do
+        post :add_to_cart
+        post :remove_from_wish_list
+      end
+    end
   end
 
   #--=== 管理员专区 ===-->
