@@ -1,4 +1,5 @@
 class Brand < ApplicationRecord
+  mount_uploader :logo, ImageUploader
   validates :name, presence: true
   has_many :products
 
