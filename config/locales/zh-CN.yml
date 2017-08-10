@@ -171,7 +171,7 @@ zh-CN:
   shipping-phone: 联络电话
   shipping-address: 收件地址
 
-  btn-order-create: 确认下订
+  btn-order-create: 确认订单
 
   # 订单 #
   order-show: 订单明细
@@ -237,7 +237,7 @@ zh-CN:
 
   # 历史订单 #
   account-order-index: 历史订单
-  f-order-created-at: 下订日期 / 年 /时间
+  f-order-created-at: 订单日期 / 年 /时间
   order-id: 订单编号
   order-total: 订单金额
   order-date: 下单时间

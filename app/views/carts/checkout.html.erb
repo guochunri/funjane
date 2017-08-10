@@ -2,7 +2,9 @@
   <div class='col-md-12'>
     <!--=== 页面标题 ===-->
     <h2><%= t('cart-index') %></h2>
+
     <%=link_to(t('cart-clear'), clear_carts_path, method: :delete, class: 'pull-right', style: 'text-decoration: underline;', data: { confirm: t('message-confirm-clear-cart') } ) %>
+
     <!--=== 购物车信息 ===-->
     <table class='table'>
       <!-- 购物车列表标题 -->
@@ -14,7 +16,7 @@
           <th></th>
         </tr>
       </thead>
-      <!-- 购物车列表内容 -->
+      <!-- 购物车列表內容 -->
       <tbody>
         <% current_cart.cart_items.each do |cart_item| %>
           <tr>
@@ -38,7 +40,7 @@
     </table>
 
     <br/>
-    <!-- 购物车内商品总价 -->
+    <!-- 购物车內商品总价 -->
     <div class='totol clearfix'>
       <span class='pull-right'>
         <%= t('f-cart-total') %>
@@ -47,11 +49,41 @@
     </div>
 
     <hr/>
-    <!-- 购物车结账 -->
-    <div class='checkout clearfix'>
-      <span class='pull-right'>
-        <%= link_to(t('btn-checkout'), checkout_carts_path, method: :post, class: 'btn btn-lg btn-default') %>
-      </span>
+    <!--=== 页面标题 ===-->
+    <h2><%= t('checkout-index') %></h2>
+
+    <!--=== 订单表单 ===-->
+    <div class='order-form'>
+      <%= simple_form_for @order do |f| %>
+        <!-- 订购人 -->
+        <legend><%= t('f-billing-info') %></legend>
+
+        <div class='form-group'>
+          <%= f.input :billing_name, :label => t('f-billing-name')%>
+        </div>
+        <div class='form-group'>
+          <%= f.input :billing_address, :label => t('f-billing-address') %>
+        </div>
+
+        <!-- 收货人 -->
+        <legend><%= t('f-shipping-info') %></legend>
+
+        <div class='form-group'>
+          <%= f.input :shipping_name, :label => t('f-shipping-name') %>
+        </div>
+        <div class='form-group'>
+          <%= f.input :shipping_phone, :label => t('f-shipping-phone') %>
+        </div>
+        <div class='form-group'>
+          <%= f.input :shipping_address, :label => t('f-shipping-address') %>
+        </div>
+
+        <!-- 产生订单 -->
+        <div class='checkout'>
+          <%= f.submit t('btn-order-create'), class: 'btn btn-lg btn-default pull-right' %>
+        </div>
+
+      <% end %>
     </div>
   </div>
 </div>

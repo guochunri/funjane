@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   # 购物车
   resources :carts do
     collection do
-      delete :clear
+      delete :clear   # 清空购物车
+      post :checkout  # 下订单
     end
   end
   resources :cart_items
+  resources :orders
 
   #--=== 后台 ===-->
   namespace :admin do
