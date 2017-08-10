@@ -18,6 +18,8 @@
       <!--=== 后台操作面板 ===-->
       <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+          <!-- 订单管理 -->
+          <li><%= link_to(t('admin-order'), admin_orders_path, :class => 'btn btn-md btn-default') %></li>
           <!-- 商品管理 -->
           <li> <%= link_to(t('admin-product'), admin_products_path, :class => 'btn btn-md btn-default') %> </li>
           <!-- 品牌管理 -->

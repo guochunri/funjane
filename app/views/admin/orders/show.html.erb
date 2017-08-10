@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-md-12">
+    <!--=== 页面标题 ===-->
+    <h2>
+      <%= t('order-show') %>
+      (<%= render_order_paid_state(@order) %>)
+    </h2>
+    <br/>
+    <br/>
+    <!--=== 订单信息 ===-->
+    <table class='table'>
+      <!-- 订单列表标题 -->
+      <thead>
+        <tr>
+          <th><%= t('f-cart-product-info') %></th>
+          <th><%= t('f-cart-product-price') %></th>
+          <th><%= t('f-cart-product-quantity') %></th>
+        </tr>
+      </thead>
+      <!-- 订单列表內容 -->
+      <tbody>
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td>
+              <%= order_item.product_name %>
+            </td>
+            <td>
+              <%= order_item.product_price %>
+            </td>
+            <td>
+              <%= order_item.quantity %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <!-- 订单商品总价 -->
+    <div class='totol clearfix'>
+      <span class='pull-right'>
+        <%= t('f-cart-total') %>
+        <%= @order.total %>
+      </span>
+    </div>
+
+    <!--=== 页面标题 ===-->
+    <h2><%= t('checkout-index') %></h2>
+
+    <!--=== 联系人 / 收件人信息 ===-->
+    <table class='table'>
+      <tbody>
+        <!-- 联系人信息 -->
+        <tr>
+          <th>
+            <%= t('f-billing-info') %>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <%= @order.billing_name%><br/>
+            <%= @order.billing_address%>
+          </td>
+        </tr>
+        <!-- 收件人信息 -->
+        <tr>
+          <th>
+            <%= t('f-shipping-info') %>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <%= @order.shipping_name%><br/>
+            <%= @order.shipping_address%>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
