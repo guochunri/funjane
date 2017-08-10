@@ -8,10 +8,17 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  # 加入购物车
   def add_to_cart
     @product = Product.find(params[:id])
-    current_cart.add_product_to_cart(@product)
-    flash[:notice] = t('message-add-to-cart-success')
+
+    if !current_cart.products.include?(@product)
+      current_cart.add_product_to_cart(@product)
+      flash[:notice] = t('message-add-to-cart-success')
+    else
+      flash[:warning] = t('message-already-added')
+    end
+
     redirect_to :back
   end
 
