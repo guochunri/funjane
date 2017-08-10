@@ -55,6 +55,9 @@ gem 'mini_magick'
 # Rails Console 排版
 gem 'awesome_rails_console'
 
+# 订单状态
+gem 'aasm'
+
 group :development, :test do
   gem 'pry'
   gem 'awesome_rails_console'
