@@ -5,8 +5,8 @@
       <%= t('order-show') %>
       (<%= render_order_paid_state(@order) %>)
     </h2>
-    <br/>
-    <br/>
+
+    <%= render "admin/orders/state_option", order: @order %>
     <!--=== 订单信息 ===-->
     <table class='table'>
       <!-- 订单列表标题 -->
