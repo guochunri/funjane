@@ -17,9 +17,15 @@ Rails.application.routes.draw do
       post :checkout  # 下订单
     end
   end
-  
+
   resources :cart_items
-  resources :orders
+
+  # 订单
+  resources :orders do
+    member do
+      post :pay # 付款（暂）
+    end
+  end
 
   #--=== 使用者专区 ===-->
   namespace :account do

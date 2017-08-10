@@ -10,7 +10,18 @@ class Order < ApplicationRecord
   has_many :order_items
 
   def generate_token
-    self.token = SecureRandom.uuid # Ruby 內建亂序生成器
+    self.token = SecureRandom.uuid # Ruby 內建乱序生成器
+  end
+
+  # 付款 #
+  # 更新付款方式
+  def set_payment_with!(method)
+    self.update_columns(payment_method: method)
+  end
+
+  # 更新狀態為：已付款
+  def pay!
+    self.update_columns(is_paid: true)
   end
 
 end
