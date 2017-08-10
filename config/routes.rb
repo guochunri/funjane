@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # 购物车
   resources :carts
+  resources :cart_items
 
   #--=== 后台 ===-->
   namespace :admin do
