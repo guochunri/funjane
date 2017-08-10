@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :orders do
     member do
       post :pay # 付款（暂）
+      post :apply_to_cancel # 申请取消订单
     end
   end
 
