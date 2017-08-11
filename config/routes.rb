@@ -87,6 +87,14 @@ Rails.application.routes.draw do
         post :hide
       end
     end
+
+    resources :intros do
+      member do
+        post :publish
+        post :hide
+      end
+    end
+
   end
 
 end
