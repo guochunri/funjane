@@ -1,66 +1,99 @@
-<nav class='navbar navbar-default' role='navigation'>
-  <div class='container-fluid'>
-
-    <!--=== navbar 品牌名称 ===-->
-    <div class='navbar-header'>
-      <a class='navbar-brand' href='/'><%= t('funjane') %></a>
-    </div>
-
-
-
-    <!--=== navbar 按钮 ===-->
-    <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
-      <!--=== 左侧按钮：商品 ===-->
-      <ul class='nav navbar-nav'>
-        <li class='active'>
-          <%= link_to(t('product-access'), products_path) %>
-        </li>
-      </ul>
-
-      <!--=== 右侧按钮： ===-->
-      <ul class='nav navbar-nav  navbar-right'>
-        <!-- 願望清單 -->
-        <li>
-          <%= link_to account_products_path do %>
-            <%= t('wish-list') %> <i class='fa fa-bookmark-o'></i>
+<div class="row">
+  <div class="col-md-12">
+    <% if current_page?('/') %>
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+    <% else %>
+      <div class="navbar navbar-default navbar-fixed-top show_bgcolor" role="navigation">
+    <% end %>
+      <div class="container">
+        <div class="navbar-header">
+          <!--=== 右侧下拉选单（移动端显示） ===-->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-4" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--=== 网站 Logo/名称 ===-->
+          <%= link_to root_path, class: "navbar-brand logo-box scroll" do %>
+            <%= image_tag("logo.png") %><%= t('funjane') %>
           <% end %>
-        </li>
-        <!-- 购物车 -->
-        <li>
-          <%= link_to carts_path do %>
-            <i class='fa fa-shopping-cart'></i> ( <%= current_cart.products.count %> )
-          <% end %>
-        </li>
-
-        <% if !current_user %>
-          <!-- 注册 / 登入 -->
-          <li><%= link_to(t('signup'), new_user_registration_path) %> </li>
-          <li><%= link_to(t('login'), new_user_session_path) %></li>
-        <% else %>
-          <!-- 使用者下拉式选单 -->
-          <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
-              <%= t('greeting') %>
-              <%= current_user.email %>
-              <b class='caret'></b>
-            </a>
-            <!-- 选单选项 -->
-            <ul class='dropdown-menu'>
-
-              <!-- 使用者专区 -->
-              <li>
-                <%= link_to(t('account-order-access'), account_orders_path) %>
-              </li>
-              <!-- 管理员专区 -->
-              <% if current_user.admin? %>
-                <li> <%= link_to(t('admin-access'), admin_products_path) %> </li>
+        </div>
+        <div class="collapse navbar-collapse top-nav" id="menu-4">
+          <!--=== 网站链接 ===-->
+          <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to(t('product-access'), products_path) %></li>
+            <!-- <li><%= link_to(t('brand-access'), '#', class: "scroll") %></li>
+            <li><%= link_to(t('recommend-access'), '#', class: "scroll") %></li> -->
+          </ul>
+          <!--=== 账号操作 ===-->
+          <ul class='nav navbar-nav  navbar-right'>
+            <li class="divider" role="separator"></li>
+            <!-- 愿望清单 -->
+            <li>
+              <%= link_to account_products_path do %>
+                <%= t('wish-list') %> <i class='fa fa-gift'></i>
               <% end %>
-              <!-- 登出 -->
-              <li> <%= link_to(t('logout'), destroy_user_session_path, method: :delete) %> </li>
-            </ul>
-          </li>
-        <% end %>
-      </ul>
+            </li>
+            <!-- 购物车 -->
+            <li>
+              <%= link_to carts_path do %>
+                <i class='fa fa-shopping-cart'></i> ( <%= current_cart.products.count %> )
+              <% end %>
+            </li>
+            <!-- 切换语系 -->
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <%= t('language') %>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- 语系选项 -->
+                <li><%= link_to "简体中文", :controller => controller_name, :action => action_name, :locale => "zh-CN" %></li>
+                <li><%= link_to "英文", :controller => controller_name, :action => action_name, :locale => "zh-en" %></li>
+              </ul>
+            </li>
+            <% if !current_user %>
+              <!-- 访客注册 / 登入 -->
+              <li><%= link_to(t('signup'), new_user_registration_path) %> </li>
+              <li><%= link_to(t('login'), new_user_session_path) %></li>
+            <% else %>
+              <!-- 使用者下拉式选单 -->
+              <li class='dropdown'>
+                <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
+                  <%= t('greeting') %>
+
+                  <b class='caret'></b>
+                </a>
+                <!-- 下拉选单 -->
+                <ul class='dropdown-menu'>
+                  <!-- admin 后台 -->
+                  <% if current_user.admin? %>
+                    <li> <%= link_to(t('admin-access'), admin_products_path) %> </li>
+                    <li class="divider"> </li>
+                  <% end %>
+                  <!-- user 选项 -->
+
+                  <li> <%= link_to(t('user-order'), account_orders_path) %> </li>
+                  <li class="divider"> </li>
+                  <li> <%= link_to(t('logout'), destroy_user_session_path, method: :delete) %> </li>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+          <!-- 搜索栏 -->
+          <%= form_tag '#', :method => :get, class: "navbar-form pull-right" do %>
+            <div class="input-group search-box">
+              <input type="text" class="form-control" name="keyword" placeholder="<%= t('keywaods')%>" value="<%= params[:keyword] %>">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <span><i class="fa fa-search"></i></span>
+                </button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
+</div>
