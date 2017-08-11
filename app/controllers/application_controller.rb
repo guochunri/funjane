@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
 
   def admin_required
     if !current_user.admin?
@@ -22,5 +24,11 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = cart.id
     return cart
   end
-  
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+
 end
