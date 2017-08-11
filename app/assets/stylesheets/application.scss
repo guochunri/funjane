@@ -26,7 +26,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,900,700,600,500,300,200,100,800);
 @import url(https://fonts.googleapis.com/css?family=Acme);
 
-/*===== 網站通用設置 ======*/
+/*===== 网站通用设置 ======*/
 body {
   overflow-x: hidden; //裁切內容，超出視窗不顯示
   letter-spacing: 1px;
@@ -37,13 +37,13 @@ body {
     text-decoration:none !important;
   }
 
-    /*===== 頁面內容設定 ======*/
+    /*===== 页面內容设定 ======*/
   .container-fluid {
     margin-top: 55px;
     min-height: 550px;
   }
 
-    /*===== 換頁按鈕設定 ======*/
+    /*===== 换页按钮设定 ======*/
   .page-box {
     margin-top: 75px;
 
@@ -57,7 +57,7 @@ body {
     }
   }
 
-  /*===== 基礎欄位設定 ======*/
+  /*===== 基礎欄位设定 ======*/
   .width-25 {
     width: 25%;
   }
@@ -88,7 +88,7 @@ body {
   }
 
 
-  /*===== 立即選購按鈕 ======*/
+  /*===== 立即选购按钮 ======*/
   .buy-box {
     text-align: center;
     margin: 50px auto 0 auto;
@@ -156,7 +156,7 @@ body {
       width: 30px;
       height: 30px;
       border: 2px solid #ffffff; /* Logo 外框 */
-      border-radius: 25px; /* Logo 切成圓形 */
+      border-radius: 25px; /* Logo 切成图形 */
     }
   }
 
@@ -177,7 +177,7 @@ body {
     }
   }
 
-  /* 下拉選單三角箭頭 */
+  /* 下拉选单三角箭頭 */
   .dropdown-menu:before {
     content: "";
     border-bottom: 10px solid #fff;
@@ -247,7 +247,7 @@ body {
     width: 30px;
     height: 30px;
     border: 2px solid #ffffff; /* Logo 外框 */
-    border-radius: 25px; /* Logo 切成圓形 */
+    border-radius: 25px; /* Logo 切成圆形 */
   }
 
   p {
@@ -394,32 +394,31 @@ body {
   }
 }
 
-/*===== Story 首页-品牌故事 =====*/
-.story-box {
-  text-align: center;
-  padding: 25px 62.5px 50px 62.5px;
+/*===== section-2 =====*/
 
-  h3 {
-    font-size: 20px;
-    text-align: left;
+// 中间区域介绍内容样式
+  .section-2 {
+    height: 450px;
+    background-size: cover;                             //确保图片完全撑开
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(https://i.loli.net/2017/08/11/598d816674ffb.jpg);
   }
-
-  p {
+  .section-2 .tagline {                          //编写标题样式
+    text-align: center;
+    color: #7f8c8d;
+    letter-spacing: 0.1em;                              //把字间距撑开，视觉感更优雅
+    font-size: 1.6em;
+    margin-top: 3.2em;
+  }
+  .section-2 .tagp {                             //编写内容样式
+    text-align: center;
     color: #666;
-    line-height: 30px;
-    text-align: justify;
+    font-size: 1.2em;
+    margin-top: 2.5em;
+    line-height: 2.5em;                                 //行间距也要拉开大一些
+    letter-spacing: 0.18em;                             //把字间距撑开，视觉感更优雅
   }
-
-  img {
-    width: 150px;
-    border-radius: 50%;
-  }
-
-  hr {
-    height: 1.5px;
-    background-color: #999;
-  }
-}
 
 /*===== Categories 首页-商品分类 =====*/
 .categories-box {
@@ -501,7 +500,7 @@ body {
   background: image_url("start.jpg") no-repeat scroll top center/ cover;
 }
 
-/*===== Product 產品 =====*/
+/*===== Product 产品 =====*/
 .product-box {
   text-align: center;
   padding: 0 0 100px 0;
@@ -550,7 +549,7 @@ body {
     margin: 150px 0 150px 0;
   }
 
-  /*===== 產品列表內容設置 =====*/
+  /*===== 产品列表內容设置 =====*/
   .product-content {
     img {
       width: 100%;
@@ -572,7 +571,7 @@ body {
     min-height: 55px;
   }
 
-  /*===== 產品路徑設置 =====*/
+  /*===== 产品路径设置 =====*/
   .path-box {
     text-align: left;
     height: 20px;
@@ -596,7 +595,7 @@ body {
     }
   }
 
-  /*===== 產品顏色設置 =====*/
+  /*===== 产品顏色设置 =====*/
   .color-circle {
     button {
       border: none;
@@ -608,11 +607,11 @@ body {
     }
 
     button:active {
-      outline: none; //點擊不顯示外框
+      outline: none;
     }
   }
 
-  /*===== 精選商品圖示 =====*/
+  /*===== 精选商品图示 =====*/
   .chosen-box {
     position: absolute;
     border-radius: 45px;
@@ -634,11 +633,11 @@ body {
   }
 }
 
-/*===== 產品信息區塊設置 =====*/
+/*===== 产品信息区块设置 =====*/
 .product-show {
   margin: 0 0 100px 0;
 
-  /*===== 產品圖片區塊設置=====*/
+  /*===== 产品图片区块设置=====*/
   .product-image {
     .image-box {
       padding: 7.5px;
@@ -658,7 +657,7 @@ body {
     }
   }
 
-  /*===== 產品介紹區塊設置 =====*/
+  /*===== 产品介紹区块设置 =====*/
   .product-detail {
     // padding: 0 25px 0 25px;
     text-align: left;
@@ -712,7 +711,7 @@ body {
       margin-right: 15px;
     }
 
-    /*===== 按鈕設置 =====*/
+    /*===== 按钮设置 =====*/
     .btn-default {
       margin-top: 25px;
       width: 100%;
@@ -795,7 +794,7 @@ body {
 }
 
 
-/*===== Content 網站-內容區塊排版設定 =====*/
+/*===== Content 网站-內容区块排版设定 =====*/
 .content-box {
   min-height: 450px;
 
@@ -822,7 +821,7 @@ body {
 
 
 
-/*===== Cart 網站-購物車設定 =====*/
+/*===== Cart 网站-购物车设定 =====*/
 .cart-item-box {
   text-align: left;
   margin: 30px 0 5px 0;
@@ -881,7 +880,7 @@ body {
 }
 
 
-/*===== Order 網站-訂單資訊設定 =====*/
+/*===== Order 网站-订单信息设定 =====*/
 .order-form {
   text-align: left;
 
@@ -915,7 +914,7 @@ body {
   }
 }
 
-/*===== Order 網站-訂單歷史 =====*/
+/*===== Order 网站-订单历史 =====*/
 .order-box {
   text-align: left;
 
@@ -969,7 +968,7 @@ body {
   }
 }
 
-/*===== Control 後台-控制選單 =====*/
+/*===== Control 后台-控制选单 =====*/
 .nav-sidebar {
   margin-top: 65px;
 
@@ -993,7 +992,7 @@ body {
   }
 }
 
-/*===== Admin 後台-通用設置 =====*/
+/*===== Admin 后台-通用设置 =====*/
 .admin-box {
   padding: 25px;
 
@@ -1030,7 +1029,7 @@ body {
     max-width: 550px;
   }
 
-  /*===== 操作選項 =====*/
+  /*===== 操作选项 =====*/
   .action-box {
     min-width: 100px;
     margin-top: -3.5px;
@@ -1041,7 +1040,7 @@ body {
     }
   }
 
-  /*===== 按鈕設置 =====*/
+  /*===== 按钮设置 =====*/
   .btn-default {
     padding: 5px 10px 5px 10px;
     background-color: #fff;
@@ -1062,7 +1061,7 @@ body {
     color: #fff;
   }
 
-  /*===== 產品顏色設置 =====*/
+  /*===== 产品顏色设置 =====*/
 
   .admin-color-circle {
     button {
@@ -1075,11 +1074,11 @@ body {
     }
 
     button:active {
-      outline: none; //點擊不顯示外框
+      outline: none;
     }
   }
 
-  /*===== 換頁按鈕 =====*/
+  /*===== 换页按钮 =====*/
   .admin-page-box {
     margin-top: 75px;
 
@@ -1097,7 +1096,7 @@ body {
 
 
 
-/*===== Admin-Form 後台表單設置 =====*/
+/*===== Admin-Form 后台表单设置 =====*/
 .admin-data-box {
   hr {
     height: 1.5px;
@@ -1127,7 +1126,7 @@ body {
     font-size: 16px;
   }
 
-  /*===== 送出按鈕 =====*/
+  /*===== 送出按钮 =====*/
   .form-actions{
     text-align: center;
     margin-top: 50px;
@@ -1150,7 +1149,7 @@ body {
   }
 }
 
-/*===== Admin 產品後台圖片區塊設置 =====*/
+/*===== Admin 产品后台图片区块设置 =====*/
 .product-image {
   .image-box {
     padding: 7.5px;
