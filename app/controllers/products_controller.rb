@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:add_to_wish_list, :remove_from_wish_list]
+  
   def index
     # 商品类型 / 品牌
     @category_groups = CategoryGroup.published
