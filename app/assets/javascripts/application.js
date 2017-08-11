@@ -16,26 +16,23 @@
 //= require bootstrap
 //= require_tree .
 
-/*===== Go Top 回到顶端 =====*/
-function goTop(min_height) {
+$(document).on('scroll', function () {
+  /*===== Welcome#index - 首页导航栏变化 =====*/
+	if ($(this).scrollTop() > 125) {
+		$('#navbar').addClass('show_bgcolor')
+	} else {
+		$('#navbar').removeClass('show_bgcolor')
+	}
+
+  /*===== Welcome#index - 回到页面顶端 =====*/
+  if ($(this).scrollTop() > 2000) {
+    $(".goTop").fadeIn(100); //按钮出现时间（画面下移）
+  } else {
+    $(".goTop").fadeOut(200); //按钮消失时间（画面上移）
+  }
+
   $(".goTop").click(
     function() {
-      $('html,body').animate({
-          scrollTop: 0
-      }, 700);
+      $('html,body').scrollTop(0);
     });
-  min_height=min_height?min_height:2000; //按钮出现高度（画面下移）
-  $(window).scroll(function() {
-    var s = $(window).scrollTop();
-    if (s > min_height) {
-        $(".goTop").fadeIn(100); //按钮出现时间（画面下移）
-    } else {
-        $(".goTop").fadeOut(200); //按钮消失时间（画面上移）
-    }
-  });
-}
-
-
-$(function() {
-  goTop();
-});
+})
