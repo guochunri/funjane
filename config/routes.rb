@@ -88,6 +88,7 @@ Rails.application.routes.draw do
       end
     end
 
+    # 广告 #
     resources :intros do
       member do
         post :publish

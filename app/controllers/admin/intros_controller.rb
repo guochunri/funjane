@@ -15,7 +15,7 @@ class Admin::IntrosController < ApplicationController
     @intro = Intro.new(intro_params)
 
     if @intro.save
-      redirect_to admin_intros_path, notice: '廣告新增成功'
+      redirect_to admin_intros_path, notice: '广告新增成功'
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Admin::IntrosController < ApplicationController
     @intro = Intro.find(params[:id])
     @intro.update(intro_params)
     if @intro.save
-      redirect_to admin_intros_path, notice: '廣告修改成功'
+      redirect_to admin_intros_path, notice: '广告修改成功'
     else
       render :edit
     end
@@ -38,7 +38,21 @@ class Admin::IntrosController < ApplicationController
   def destroy
     @intro = Intro.find(params[:id])
     @intro.destroy
-      redirect_to admin_intros_path, notice: '廣告刪除成功'
+      redirect_to admin_intros_path, notice: '广告刪除成功'
+  end
+
+  # 发布
+  def publish
+    @intro = Intro.find(params[:id])
+    @intro.publish!
+    redirect_to :back
+  end
+
+  # 隐藏
+  def hide
+    @intro = Intro.find(params[:id])
+    @intro.hide!
+    redirect_to :back
   end
 
 private
