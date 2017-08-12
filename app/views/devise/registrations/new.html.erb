@@ -6,7 +6,7 @@
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <div class="form-inputs">
           <%= f.input :email, :label => false, placeholder: t('dv-check-email'), error: t('dv-warn-email'), required: true, autofocus: true %>
-          <%= f.input :nickname, :label => false, placeholder: t('dv-name'), error: t('dv-warn-name'), required: true %>
+          <%= f.input :name, :label => false, placeholder: t('dv-name'), error: t('dv-warn-name'), required: true %>
           <%= f.input :password, :label => false, placeholder: t('dv-set-pwd'), error: t('dv-warn-pwd-characters'), required: true, input_html: { maxlength: 16 } %>
           <%= f.input :password_confirmation, :label => false, placeholder: t('dv-confirm-pwd'), error: t('dv-warn-pwd'), required: true, input_html: { maxlength: 16 } %>
         </div>
