@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:add_to_wish_list, :remove_from_wish_list]
-  
+
   def index
     # 商品类型 / 品牌
     @category_groups = CategoryGroup.published
@@ -11,18 +11,18 @@ class ProductsController < ApplicationController
       @category = params[:category]
       @category_id = Category.find_by(name: @category)
 
-      @products = Product.where(:category => @category_id).published.paginate(:page => params[:page], :per_page => 12)
+      @products = Product.where(:category => @category_id).published.recent.paginate(:page => params[:page], :per_page => 12)
 
     # 判断是否筛选品牌
     elsif params[:brand].present?
       @brand = params[:brand]
       @brand_id = Brand.find_by(name: @brand)
 
-      @products = Product.where(:brand => @brand_id).published.paginate(:page => params[:page], :per_page => 12)
+      @products = Product.where(:brand => @brand_id).recent.published.paginate(:page => params[:page], :per_page => 12)
 
     # 预设显示所有公开商品
     else
-      @products = Product.published.paginate(:page => params[:page], :per_page => 12)
+      @products = Product.published.recent.paginate(:page => params[:page], :per_page => 12)
     end
 
   end
