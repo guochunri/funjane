@@ -4,7 +4,7 @@ class Admin::BrandsController < ApplicationController
   layout "admin"
 
   def index
-    @brands = Brand.all
+    @brands = Brand.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
@@ -44,7 +44,7 @@ class Admin::BrandsController < ApplicationController
     @brand.publish!
     redirect_to :back
   end
- 
+
   def hide
     @brand = Brand.find(params[:id])
     @brand.hide!
