@@ -10,12 +10,12 @@
         <% if @product_images.present? %>
         <!-- 第一张图片为 medium 尺寸大图 -->
         <div class="col-md-12">
-          <%= image_tag(@product_images.first.image.main.url, class: 'main-image') %>
+          <%= image_tag(@product_images.first.image.main.url, class: 'main-image thumbnail') %>
         </div>
           <% @product_images.each_with_index do |p| %>
             <!-- 其他图片 other 尺寸小图 -->
             <div class="col-md-3 col-sm-4 col-xs-6 image-box">
-              <%= image_tag(p.image.other.url, class: 'list-image') %>
+              <%= image_tag(p.image.other.url, class: 'list-image thumbnail') %>
             </div>
           <% end %>
         <% else %>
@@ -39,18 +39,18 @@
         <hr />
       <div class="row">
           <!-- 愿望清单 -->
-        <div class='left-box'>
+        <div class='left-box wish'>
           <% if current_user && current_user.is_wish_list_owner_of?(@product) %>
             <%= link_to remove_from_wish_list_product_path(@product), method: :post do %>
-              <label><i class="fa fa-check  fa-fw"> </i><%= t('wish-list-remove') %></label>
+              <i class="fa fa-check fa-fw"> </i><%= t('wish-list-remove') %>
             <% end %>
           <% else %>
             <%= link_to add_to_wish_list_product_path(@product), method: :post do %>
-              <label><i class="fa fa-plus  fa-fw"> </i><%= t('wish-list-add') %></label>
+              <i class="fa fa-plus fa-fw"> </i><%= t('wish-list-add') %>
             <% end %>
           <% end %>
         </div>
-        <div class='right-box'>
+        <div class='right-box share'>
           <a href="#s"><%= image_tag("link_facebook.png") %></a>
           <a href="#s"><%= image_tag("link_twitter.png") %></a>
           <a href="#s"><%= image_tag("link_google-plus.png") %></a>
