@@ -1,7 +1,8 @@
 class CategoryGroup < ApplicationRecord
   mount_uploader :logo, ImageUploader
+  mount_uploader :image, GroupUploader
   validates :name, presence: true
-  
+
   has_many :categories
 
   scope :published, -> { where(is_hidden: false) }

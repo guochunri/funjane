@@ -1,7 +1,7 @@
 <div class="product-box product-show">
   <div class="container">
     <!--=== 商品类型 & 品牌选单 ===-->
-    
+    <%= image_tag(@product.category.category_group.image, class: "background-image") %>
     <%= render "products/menu" %>
 
     <!-- 商品圖片 -->

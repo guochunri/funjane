@@ -1,4 +1,8 @@
 class Admin::CategoryGroupsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :admin_required
+  layout "admin"
+
   def show
     @category_group = CategoryGroup.find(params[:id])
   end
@@ -48,7 +52,7 @@ class Admin::CategoryGroupsController < ApplicationController
   private
 
   def category_group_params
-    params.require(:category_group).permit(:name, :is_hidden, :description, :logo)
+    params.require(:category_group).permit(:name, :is_hidden, :description, :logo, :image)
   end
 
 end
