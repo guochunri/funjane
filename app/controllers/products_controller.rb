@@ -22,11 +22,11 @@ class ProductsController < ApplicationController
 
     # 判断是否筛选品牌
     elsif params[:brand].present?
-      @brand = params[:brand]
-      @brand_id = Brand.find_by(name: @brand)
+      @brand_s = params[:brand]
+      @brand = Brand.find_by(name: @brand_s)
 
-      @products = Product.where(:brand => @brand_id).recent.published.paginate(:page => params[:page], :per_page => 12)
-
+      @products = Product.where(:brand => @brand.id).published.recent.paginate(:page => params[:page], :per_page => 12)
+      
     # 预设显示所有公开商品
     else
       @products = Product.published.recent.paginate(:page => params[:page], :per_page => 12)
