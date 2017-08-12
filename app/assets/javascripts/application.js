@@ -36,3 +36,13 @@ $(document).on('scroll', function () {
       $('html,body').scrollTop(0);
     });
 })
+
+/*===== Products#show - 变更显示图片 =====*/
+$(document).on('mouseover', '.list-image', function () {
+  var src_other = $(this).attr('src') //抓取小图片路径
+  var src_main = src_other.toString().replace("other", "main") //更改图片路径
+  $('.main-image').attr('src', src_main) //变更大图图片路径
+
+  $('.list-image').removeClass('list-image-active') //其他图片接触锁定状态
+  $(this).addClass('list-image-active') //当前图片新增锁定状态
+})

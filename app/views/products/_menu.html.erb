@@ -42,7 +42,7 @@
   <%= link_to products_path do %>
     <%= t('funjane-select') %>
   <% end %>
-  
+
   <% if params[:id].present? %>
   / <a href="../products?group=<%= @product.category.category_group.name %>"><%= @product.category.category_group.name %></a> / <a href="../products?category=<%= @product.category.name %>"><%= @product.category.name %></a> / <a href="<%= @product.id %>"><%= @product.name %></a>
   <% elsif params[:category].present? %>
@@ -50,5 +50,5 @@
   <% elsif params[:group].present? %>
   / <a href="products?group=<%= @group.name %>"><%= @group.name %></a>
   <% end %>
-<hr/>
 </div>
+<hr/>
