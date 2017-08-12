@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= t('j-and-a-select') %></title>
+    <title><%= t('funjane') %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -28,7 +28,7 @@
              <li><%= link_to admin_intros_path do %> <span class="fa fa-film"></span> <span><%= t('admin-homepage') %></span><% end %></li>
           </ul>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10 admin-box">
           <%= yield %>
         </div>
       </div>
