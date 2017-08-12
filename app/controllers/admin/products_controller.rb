@@ -4,28 +4,38 @@ class Admin::ProductsController < ApplicationController
   layout "admin"
 
   def index
-    @products = Product.all.recent.paginate(:page => params[:page], :per_page => 10)
+    @products = Product.all.recent.paginate(:page => params[:page], :per_page => 15)
   end
 
   def show
     @product = Product.find(params[:id])
+
+    # 商品图片
     @product_images = @product.product_images.all
   end
 
   def new
     @product = Product.new
+
+    # 商品图片
     @product_image = @product.product_images.build
 
-    @brands = Brand.all.map { |b| [b.name, b.id] }
-    @categories = Category.all.map { |c| [c.name, c.id] }
+    # 商品所属的品牌/分类
+    @brands = Brand.all
+    @categories = Category.all.order("category_group_id, name")
+    # @brands = Brand.all.map { |b| [b.name, b.id] }
+    # @categories = Category.all.map { |c| [c.name, c.id] }
   end
 
   def create
     @product = Product.new(product_params)
-    @brands = Brand.all.map { |b| [b.name, b.id] }
-    @product.brand_id = params[:brand_id]
-    @categories = Category.all.map { |c| [c.name, c.id] }
-    @product.category_id = params[:category_id]
+
+    # 商品所属的品牌
+    # @brands = Brand.all.map { |b| [b.name, b.id] }
+    # @product.brand_id = params[:brand_id]
+    # 商品所属的分类
+    # @categories = Category.all.map { |c| [c.name, c.id] }
+    # @product.category_id = params[:category_id]
 
     if @product.save
       if params[:product_images] != nil
@@ -41,8 +51,12 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @brands = Brand.all.map { |b| [b.name, b.id] }
-    @categories = Category.all.map { |c| [c.name, c.id] }
+
+    # 商品所属的品牌/分类
+    @brands = Brand.all
+    @categories = Category.all.order("category_group_id, name")
+    # @brands = Brand.all.map { |b| [b.name, b.id] }
+    # @categories = Category.all.map { |c| [c.name, c.id] }
   end
 
   def update

@@ -1,9 +1,10 @@
 class Product < ApplicationRecord
-  validates :name, presence: true
-  validates :price, numericality: { greater_than: 0 }
-  validates :quantity, numericality: { greater_than_or_equal: 0 }
-  validates :category_id, presence: true
-  validates :brand_id, presence: true
+  validates :name, presence: { message: "请输入商品名称" }
+  validates :price, presence: { message: "请输入商品售价" }
+  validates :price, numericality: { greater_than: 0, message: "请输入商品售价，必须大于零" }
+  validates :quantity, presence: { message: "请输入库存数量" }, numericality: { greater_than_or_equal: 0 }
+  validates :category_id, presence: { message: "请选择商品分类" }
+  validates :brand_id, presence: { message: "请选择商品品牌" }
 
   belongs_to :category
   belongs_to :brand
