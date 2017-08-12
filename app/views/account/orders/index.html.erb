@@ -4,6 +4,10 @@
       <div class='col-md-8 col-md-offset-2'>
         <!--=== 页面标题 ===-->
         <h3><i class='fa fa-credit-card'></i> <%= t('account-order-index') %></h3>
+
+        <!-- 如果有订单资料，显示订单內容 -->
+        <% if @orders.length > 0 %>
+
         <!--=== 使用者历史订单 ===-->
         <table class='table table-hover'>
           <!-- 历史订单列表标题 -->
@@ -25,6 +29,16 @@
           <% end %>
         </tbody>
       </table>
+
+      <!-- 如果沒有订单资料 -->
+      <% else %>
+        <div class="buy-box">
+          <h1><%= t('order-no-data') %></h1>
+          <br>
+          <%= link_to(t('btn-buy-now'), products_path, class:'btn btn-lg btn-default' ) %>
+        </div>
+      <% end %>
+
       </div>
     </div>
   </div>
