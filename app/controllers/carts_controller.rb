@@ -2,6 +2,10 @@ class CartsController < ApplicationController
 
   def index
     @carts = Cart.all
+
+    # 商品类型 / 品牌
+     @category_groups = CategoryGroup.published
+     @brands = Brand.published
   end
 
   # 清空购物车
