@@ -21,7 +21,7 @@ module Admin::BrandsHelper
   #判断Logo，显示图片或尚无图片信息
   def render_brand_logo(brand)
     if brand.logo.present?
-      image_tag(brand.logo.thumb.url)
+      image_tag(brand.logo.other.url)
     else
       t('notice-no-image')
     end

@@ -14,11 +14,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process resize_to_fill: [800, 800]
-
-  version :thumb do
-    process resize_to_fill: [200, 200]
-  end
+  # process resize_to_fill: [800, 800]
+  #
+  # version :thumb do
+  #   process resize_to_fill: [200, 200]
+  # end
 
   version :medium do
     process resize_to_fill: [400, 400]
@@ -35,9 +35,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   # 愿望清单 / 购物车迷你图 #
-  version :mini do
-    process resize_to_fill: [100, 100]
-  end
+  # version :mini do
+  #   process resize_to_fill: [100, 100]
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)

@@ -10,7 +10,7 @@
       <%= image_tag(@product_images.first.image.medium.url, class: 'main-image') %>
     </div>
       <% @product_images.each_with_index do |p| %>
-        <!-- 显示所有商品图片 - thumb 尺寸小图 -->
+        <!-- 显示所有商品图片 - other 尺寸小图 -->
         <div class="col-md-2 col-sm-4 col-xs-6 image-box">
           <%= image_tag(p.image.other.url, class: 'list-image') %>
         </div>
