@@ -8,10 +8,17 @@ class ProductsController < ApplicationController
 
     # 判断是否筛选分类
     if params[:category].present?
-      @category = params[:category]
-      @category_id = Category.find_by(name: @category)
+      @category_s = params[:category]
+      @category = Category.find_by(name: @category_s)
 
-      @products = Product.where(:category => @category_id).published.recent.paginate(:page => params[:page], :per_page => 12)
+      @products = Product.where(:category => @category.id).published.recent.paginate(:page => params[:page], :per_page => 12)
+
+    # 判断是否筛选类型
+    elsif params[:group].present?
+      @group_s = params[:group]
+      @group = CategoryGroup.find_by(name: @group_s)
+
+      @products = Product.joins(:category).where("categories.category_group_id" => @group.id).paginate(:page => params[:page], :per_page => 12)
 
     # 判断是否筛选品牌
     elsif params[:brand].present?
