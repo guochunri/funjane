@@ -23,7 +23,7 @@
           <!--=== 网站链接 ===-->
           <ul class="nav navbar-nav navbar-left">
             <li><%= link_to(t('product-access'), products_path) %></li>
-            <!-- <li><%= link_to(t('brand-access'), '#', class: "scroll") %></li>
+            <li><%= link_to(t('brand-access'), '#', class: "scroll") %></li>
             <li><%= link_to(t('recommend-access'), '#', class: "scroll") %></li> -->
           </ul>
           <!--=== 账号操作 ===-->
@@ -73,7 +73,7 @@
                     <li class="divider"> </li>
                   <% end %>
                   <!-- user 选项 -->
-                  
+
                   <li> <%= link_to(t('user-order'), account_orders_path) %> </li>
                   <li class="divider"> </li>
                   <li> <%= link_to(t('logout'), destroy_user_session_path, method: :delete) %> </li>
@@ -82,7 +82,7 @@
             <% end %>
           </ul>
           <!-- 搜索栏 -->
-          <%= form_tag '#', :method => :get, class: "navbar-form pull-right" do %>
+          <%= form_tag search_products_path, :method => :get, class: "navbar-form pull-right" do %>
             <div class="input-group search-box">
               <input type="text" class="form-control" name="keyword" placeholder="<%= t('keywaods')%>" value="<%= params[:keyword] %>">
               <div class="input-group-btn">

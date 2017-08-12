@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:add_to_wish_list, :remove_from_wish_list]
+  before_action :validate_search_key, only: [:search]
 
   def index
     # 商品类型 / 品牌
@@ -26,7 +27,7 @@ class ProductsController < ApplicationController
       @brand = Brand.find_by(name: @brand_s)
 
       @products = Product.where(:brand => @brand.id).published.recent.paginate(:page => params[:page], :per_page => 12)
-      
+
     # 预设显示所有公开商品
     else
       @products = Product.published.recent.paginate(:page => params[:page], :per_page => 12)
@@ -74,6 +75,31 @@ class ProductsController < ApplicationController
     end
 
     redirect_to :back
+  end
+
+  def search
+    if @query_string.present?
+      # 显示符合关键字的商品 #
+      search_result = Product.joins(:brand).ransack(@search_criteria).result(:distinct => true)
+      @products = search_result.published.recent.paginate(:page => params[:page], :per_page => 12 )
+    end
+
+    @category_groups = CategoryGroup.published
+    @brands = Brand.published
+  end
+
+  protected
+
+  def validate_search_key
+    # 去除特殊字符 #
+    @query_string = params[:keyword].gsub(/\\|\'|\/|\?/, "") if params[:keyword].present?
+    @search_criteria = search_criteria(@query_string)
+
+  end
+
+  def search_criteria(query_string)
+    # 筛选多个栏位 #
+    { :name_or_description_or_brand_name_cont => query_string }
   end
 
 end
