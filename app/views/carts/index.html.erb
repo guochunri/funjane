@@ -29,7 +29,8 @@
             <% end %>
             <div class="name"><%= link_to(cart_item.product.name, product_path(cart_item.product)) %></div>
             <div class="price">$ <%= cart_item.product.price %></div>
-            <div class="quantity">x <%= cart_item.quantity %></div>
+            <div class="quantity">x <input type="text" name="quantity" value="<%= cart_item.quantity %>" id="<%= cart_item.product.id %>" max="<%= cart_item.product.quantity%>" class="cart-quantity-input"></div>
+            <div class="count">- <%= render_product_price_count(cart_item.product,cart_item.quantity) %></div>
             <div>
               <%= link_to cart_item_path(cart_item.product_id), method: :delete do %>
                 <i class='fa fa-close'></i>
