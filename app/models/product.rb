@@ -27,4 +27,8 @@ class Product < ApplicationRecord
     self.save
   end
 
+  def hidden?
+    is_hidden
+  end
+
 end
