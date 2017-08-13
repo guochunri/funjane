@@ -46,3 +46,64 @@ $(document).on('mouseover', '.list-image', function () {
   $('.list-image').removeClass('list-image-active') //其他图片接触锁定状态
   $(this).addClass('list-image-active') //当前图片新增锁定状态
 })
+
+/*===== Products#show - 调整购买数量 =====*/
+$(document).on('turbolinks:load', function() {
+  /*===== 增加购买数量 =====*/
+  $("#quantity-up").click(function(e) {
+    var num = parseInt($("#quantity").val());
+    var numMax = $("#quantity").attr("max");
+    if (num < numMax) {
+      $("#quantity").val(num += 1);
+    }
+    e.preventDefault();
+  });
+
+  /*===== 减少购买数量 =====*/
+  $("#quantity-down").click(function(e) {
+    var num = parseInt($("#quantity").val());
+    if (num > 1) {
+      $("#quantity").val(num -= 1);
+    }
+    e.preventDefault();
+  });
+
+  /*===== 确认购买数量（不能超出库存数量） =====*/
+  $("#quantity").blur(function(e) {
+    var num = parseInt($(this).val());
+    var numMax = $(this).attr("max");
+    if (num > numMax) {
+      num = numMax;
+    } else if (num < 0) {
+      num = 1
+    }
+    $(this).val(num);
+    e.preventDefault();
+  });
+
+
+  /*===== 确认购买数量（不能超出库存数量） =====*/
+  $(".cart-quantity-input").blur(function(e) {
+    var num = parseInt($(this).val());
+    var numMax = $(this).attr("max");
+    if (num > numMax) {
+      num = numMax;
+    } else if (num < 0) {
+      num = 1
+    }
+    $(this).val(num);
+    e.preventDefault();
+
+    var id = $(this).attr("id");
+    $.ajax({
+      type: "PATCH",
+      url: "/cart_items/"+id,
+        dataType:'json',
+        data:{
+          quantity: num
+        },
+    });
+
+    window.location.reload();
+  });
+});
