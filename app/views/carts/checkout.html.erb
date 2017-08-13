@@ -26,6 +26,7 @@
               <div class="name"><%= link_to(cart_item.product.name, product_path(cart_item.product)) %></div>
               <div class="price">$ <%= cart_item.product.price %></div>
               <div class="quantity">x <%= cart_item.quantity %></div>
+              <div class="count">- <%= render_product_price_count(cart_item.product,cart_item.quantity) %></div>
               <hr/>
             </div>
             <% end %>
