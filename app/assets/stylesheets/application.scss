@@ -125,6 +125,22 @@ body {
   .right-box {
     float: right;
   }
+
+  .chosen-box {
+      position: absolute;
+      border-radius: 45px;
+      top: 22px;
+      left: 27px;
+      width: 45px;
+      height: 45px;
+      padding-top: 11px;
+      color: #fff;
+      background-color: #02061A;
+      border: 2.5px solid #999;
+      opacity: 0.85;
+      z-index: 1;
+  }
+
 }
 
 /*===== Navbar 导览列 ======*/

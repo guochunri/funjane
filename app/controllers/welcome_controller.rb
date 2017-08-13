@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
 
   def index
     @intros = Intro.published
-    
+
     # 商品类型 / 品牌
     @category_groups = CategoryGroup.published
     @brands = Brand.published
@@ -24,7 +24,7 @@ class WelcomeController < ApplicationController
 
     # 预设显示所有公开商品
     else
-      @products = Product.published.paginate(:page => params[:page], :per_page => 12)
+      @products = Product.published.chosened.paginate(:page => params[:page], :per_page => 12)
     end
   end
 

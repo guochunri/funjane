@@ -16,6 +16,7 @@ class Product < ApplicationRecord
 
   scope :published, -> { where(is_hidden: false) }
   scope :recent, -> { order('created_at DESC') }
+  scope :chosened, -> { where(is_chosen: true) }
 
   def publish!
     self.is_hidden = false
