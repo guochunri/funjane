@@ -20,14 +20,14 @@
           </thead>
           <!-- 历史订单列表內容 -->
           <tbody>
-          <% @orders.each do |order| %>
-          <tr>
-            <td class="width-50"># <%= link_to(order.id, order_path(order.token)) %></td>
-            <td>$ <%= order.total %></td>
-            <td><%= order.created_at.strftime("%Y-%m-%d - %H:%M") %></td>
-          </tr>
-          <% end %>
-        </tbody>
+            <% @orders.each do |order| %>
+            <tr>
+              <td class="width-50"># <%= link_to(order.id, order_path(order.token)) %></td>
+              <td>$ <%= order.total %></td>
+              <td><%= order.created_at.strftime("%Y-%m-%d - %H:%M") %></td>
+            </tr>
+            <% end %>
+          </tbody>
       </table>
 
       <!-- 如果沒有订单资料 -->

@@ -12,6 +12,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_images
   has_many :wish_lists
   has_many :wish_list_owners, :through => :wish_lists, :source => :user
+  has_one :order_item
 
   scope :published, -> { where(is_hidden: false) }
   scope :recent, -> { order('created_at DESC') }
