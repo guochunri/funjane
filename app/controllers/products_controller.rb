@@ -42,7 +42,9 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @product_images = @product.product_images.all
-
+    @orderSum = OrderItem.where("product_id" => @product.id).sum(:quantity)
+    @product_stock = @product.quantity - @orderSum
+    
     @category_groups = CategoryGroup.published
     @brands = Brand.published
   end
