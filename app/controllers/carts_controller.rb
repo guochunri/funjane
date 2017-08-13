@@ -2,6 +2,7 @@ class CartsController < ApplicationController
 
   def index
     @carts = Cart.all
+    @suggests = Product.published.order("RANDOM()").limit(3)
 
     # 商品类型 / 品牌
      @category_groups = CategoryGroup.published
