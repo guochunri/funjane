@@ -100,10 +100,22 @@ class Admin::ProductsController < ApplicationController
     redirect_to :back
   end
 
+  # 精选商品
+  def chosen
+    @product = Product.find(params[:id])
+    if @product.is_chosen == true
+      @product.no_chosen!
+    else
+      @product.chosen!
+    end
+
+    redirect_to :back
+  end
+
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :quantity, :category_id, :brand_id, :is_hidden)
+    params.require(:product).permit(:name, :description, :price, :quantity, :category_id, :brand_id, :is_hidden, :is_chosen)
   end
 
 end

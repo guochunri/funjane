@@ -89,6 +89,7 @@ Rails.application.routes.draw do
       member do
         post :publish
         post :hide
+        post :chosen
       end
     end
 

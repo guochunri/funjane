@@ -31,4 +31,15 @@ class Product < ApplicationRecord
     is_hidden
   end
 
+  # 精选商品 #
+  def chosen!
+    self.is_chosen = true
+    self.save
+  end
+
+  def no_chosen!
+    self.is_chosen = false
+    self.save
+  end
+
 end

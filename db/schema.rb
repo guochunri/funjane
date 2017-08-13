@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813022543) do
+ActiveRecord::Schema.define(version: 20170813083109) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -107,8 +107,9 @@ ActiveRecord::Schema.define(version: 20170813022543) do
     t.integer  "category_id"
     t.integer  "brand_id"
     t.boolean  "is_hidden",   default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "is_chosen",   default: false
   end
 
   create_table "users", force: :cascade do |t|

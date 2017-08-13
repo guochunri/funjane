@@ -18,4 +18,11 @@ module Admin::ProductsHelper
     end
   end
 
+  # 判断产品是否为精选商品
+  def render_product_chosen_status(product)
+    if product.is_chosen
+      content_tag(:span, "", :class => "fa fa-heart fa-fw")
+    end
+  end
+
 end
